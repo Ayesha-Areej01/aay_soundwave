@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 "use client";
 import PodcastCard from '@/components/PodcastCard'
 import { useQuery } from "convex/react";
@@ -15,12 +17,12 @@ const Home = () => {
         <h1 className="text-20 font-bold text-white-1">Trending Podcasts</h1>
 
         <div className="podcast_grid">
-          {trendingPodcasts?.map(({ _id, title, description, imageUrl }) => (
+          {trendingPodcasts?.map(({ _id, podcastTitle, podcastDescription, imageUrl }) => (
             <PodcastCard 
               key={_id}
               imgUrl={imageUrl as string}
-              title={title}
-              description={description}
+              title={podcastTitle}
+              description={podcastDescription}
               podcastId={_id}
             />
           ))}

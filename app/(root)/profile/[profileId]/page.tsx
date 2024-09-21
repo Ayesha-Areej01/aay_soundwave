@@ -1,4 +1,5 @@
-// @ts-nocheck
+//@ts-nocheck
+
 "use client";
 
 import { useQuery } from "convex/react";
@@ -25,16 +26,6 @@ const ProfilePage = ({
 
   if (!user || !podcastsData) return <LoaderSpinner />;
 
-  const transformedPodcastData = {
-    podcasts: podcastsData.podcasts.map((podcast) => ({
-      ...podcast,
-      podcastTitle: podcast.title,
-      podcastDescription: podcast.description,
-      audioStorageId: podcast.audioStorageId ?? null,
-      audioUrl: podcast.audioUrl ?? null, // add this line
-    })),
-    listeners: podcastsData.listeners,
-  };
   return (
     <section className="mt-9 flex flex-col">
       <h1 className="text-20 font-bold text-white-1 max-md:text-center">
@@ -42,7 +33,7 @@ const ProfilePage = ({
       </h1>
       <div className="mt-6 flex flex-col gap-6 max-md:items-center md:flex-row">
         <ProfileCard
-          podcastData={transformedPodcastData}
+          podcastData={podcastsData!}
           imageUrl={user?.imageUrl!}
           userFirstName={user?.name!}
         />
@@ -57,8 +48,8 @@ const ProfilePage = ({
                 <PodcastCard
                   key={podcast._id}
                   imgUrl={podcast.imageUrl!}
-                  title={podcast.title!}
-                  description={podcast.description}
+                  title={podcast.podcastTitle!}
+                  description={podcast.podcastDescription}
                   podcastId={podcast._id}
                 />
               ))}
