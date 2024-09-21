@@ -1,9 +1,8 @@
-//https://elegant-haddock-86.clerk.accounts.dev
 
 const authConfig = {
     providers: [
       {
-        domain: "https://elegant-haddock-86.clerk.accounts.dev",
+        domain: "https://majestic-lynx-217.convex.cloud",
         applicationID: "convex",
       },
     ]
